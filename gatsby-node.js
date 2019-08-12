@@ -9,6 +9,7 @@ exports.createPages = async ({ graphql, actions }) => {
     `
       {
         allMarkdownRemark(
+          filter: { fields: { slug: { ne: "changelog" } } }
           sort: { fields: [frontmatter___date], order: DESC }
           limit: 1000
         ) {
@@ -54,7 +55,12 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode })
+    const value = (() => {
+      if (node.frontmatter.path) {
+        return node.frontmatter.path
+      }
+      return createFilePath({ node, getNode })
+    })()
     createNodeField({
       name: `slug`,
       node,
