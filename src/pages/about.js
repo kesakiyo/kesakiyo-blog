@@ -4,24 +4,24 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-class ChangelogPage extends React.Component {
+class AboutPage extends React.Component {
   render() {
-    const changelog = this.props.data.markdownRemark
+    const resume = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO
-          title={changelog.frontmatter.title}
-          description={changelog.frontmatter.description || changelog.excerpt}
+          title={resume.frontmatter.title}
+          description={resume.frontmatter.description || resume.excerpt}
         />
-        <div dangerouslySetInnerHTML={{ __html: changelog.html }} />
+        <div dangerouslySetInnerHTML={{ __html: resume.html }} />
       </Layout>
     )
   }
 }
 
-export default ChangelogPage
+export default AboutPage
 
 export const pageQuery = graphql`
   query {
@@ -31,12 +31,12 @@ export const pageQuery = graphql`
         author
       }
     }
-    markdownRemark(frontmatter: { type: { eq: "changelog" } }) {
+    markdownRemark(frontmatter: { type: { eq: "resume" } }) {
+      html
       excerpt(pruneLength: 160)
       frontmatter {
         title
       }
-      html
     }
   }
 `
