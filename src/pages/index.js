@@ -53,7 +53,7 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(
-      filter: { fields: { slug: { ne: "changelog" } } }
+      filter: { frontmatter: { type: { eq: "blog" } } }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {
