@@ -5,6 +5,16 @@ type: changelog
 
 # Change log
 
+## v0.0.4
+
+- Add styled component [9226c47](https://github.com/kesakiyo/kesakiyo-blog/commit/ec4ee)
+
+- Set margin to zero on body tag [2c2dfcb](https://github.com/kesakiyo/kesakiyo-blog/commit/2c2dfcb)
+
+- Add default style to anchor tag [ed6fe1b](https://github.com/kesakiyo/kesakiyo-blog/commit/ed6fe1b)
+
+- Add skeleton of global-nav component [af8aa64](https://github.com/kesakiyo/kesakiyo-blog/commit/af8aa64)
+
 ## v0.0.3
 
 - Remove typography library & Change font to "Noto Sans kr" [ec4ee](https://github.com/kesakiyo/kesakiyo-blog/commit/ec4ee)
