@@ -5,6 +5,12 @@ type: changelog
 
 # Change log
 
+## v0.0.5
+
+- Add responsive css to gnb for mobile device. [08f85](https://github.com/kesakiyo/kesakiyo-blog/commit/08f85)
+
+- Add react-icon & classnames [9d68d](https://github.com/kesakiyo/kesakiyo-blog/commit/9d68d)
+
 ## v0.0.4
 
 - Add styled component [9226c47](https://github.com/kesakiyo/kesakiyo-blog/commit/ec4ee)
