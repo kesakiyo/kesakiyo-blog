@@ -1,8 +1,10 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
 import { Link } from "gatsby"
 import Image from "gatsby-image"
+import { FaBars } from "react-icons/fa"
+import classNames from "classnames"
 
 const Nav = styled.nav`
   position: relative;
@@ -11,6 +13,11 @@ const Nav = styled.nav`
   align-items: center;
   justify-content: center;
   border-bottom: 1px solid #e6e6e6;
+
+  .fa-bars {
+    display: none;
+    cursor: pointer;
+  }
 
   .profile {
     position: absolute;
@@ -40,6 +47,68 @@ const Nav = styled.nav`
       border-bottom: 2px solid #9f5afd;
     }
   }
+
+  @media only screen and (max-width: 720px) {
+    height: 50px;
+
+    .fa-bars {
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      display: block;
+      transform: translateY(-50%);
+    }
+
+    .profile {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      .profile-thumb {
+        display: none !important;
+      }
+    }
+
+    ul {
+      position: absolute;
+      top: 51px;
+      left: 0;
+      right: 0;
+      margin: 0;
+      padding: 0;
+      background-color: white;
+      border-bottom: 1px solid #e6e6e6;
+      display: none;
+
+      &.show {
+        display: block;
+      }
+
+      li {
+        position: relative;
+        height: 50px;
+        display: block;
+        text-align: center;
+
+        .link {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          &.active {
+            border-bottom: none;
+            background-color: #f4f4f4;
+          }
+        }
+      }
+    }
+  }
 `
 
 const GlobalNav = () => {
@@ -55,8 +124,15 @@ const GlobalNav = () => {
     }
   `)
 
+  const [showMenuList, setShowMenuList] = useState(false)
+
   return (
     <Nav>
+      <FaBars
+        className="fa-bars"
+        size="1.2em"
+        onClick={() => setShowMenuList(!showMenuList)}
+      />
       <Link to="/">
         <div className="profile">
           <Image
@@ -73,24 +149,28 @@ const GlobalNav = () => {
           <span className="nickname">kesakiyo</span>
         </div>
       </Link>
-      <ul>
+      <ul
+        className={classNames({
+          show: showMenuList,
+        })}
+      >
         <li>
-          <Link to="/" activeClassName="active">
+          <Link className="link" to="/" activeClassName="active">
             Home
           </Link>
         </li>
         <li>
-          <Link to="/algorithm" activeClassName="active">
+          <Link className="link" to="/algorithm" activeClassName="active">
             Algorithm
           </Link>
         </li>
         <li>
-          <Link to="/dev" activeClassName="active">
+          <Link className="link" to="/dev" activeClassName="active">
             Dev
           </Link>
         </li>
         <li>
-          <Link to="/about" activeClassName="active">
+          <Link className="link" to="/about" activeClassName="active">
             About
           </Link>
         </li>
