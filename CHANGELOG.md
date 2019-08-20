@@ -5,6 +5,10 @@ type: changelog
 
 # Change log
 
+## v0.0.6
+
+- Add css to main page. [#6](https://github.com/kesakiyo/kesakiyo-blog/pull/6)
+
 ## v0.0.5
 
 - Add responsive css to gnb for mobile device. [08f85](https://github.com/kesakiyo/kesakiyo-blog/commit/08f85)
