@@ -1,9 +1,25 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import styled from "styled-components"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+
+const PostsWrapper = styled.div`
+  max-width: 940px;
+  margin: 50px auto;
+  padding: 20px 50px 50px 50px;
+  background-color: white;
+
+  @media only screen and (max-width: 720px) {
+    padding: 10px 20px;
+  }
+`
+
+const PostWrapper = styled.div`
+  padding: 20px 50px;
+  border-bottom: 1px solid #e6e6e6;
+`
 
 class BlogIndex extends React.Component {
   render() {
@@ -14,24 +30,24 @@ class BlogIndex extends React.Component {
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="All posts" />
-        {posts.map(({ node }) => {
-          const title = node.frontmatter.title || node.fields.slug
-          return (
-            <div key={node.fields.slug}>
-              <h3>
-                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
-                  {title}
-                </Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt,
-                }}
-              />
-            </div>
-          )
-        })}
+        <PostsWrapper>
+          {posts.map(({ node }) => {
+            const title = node.frontmatter.title || node.fields.slug
+            return (
+              <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
+                <PostWrapper key={node.fields.slug}>
+                  <h3>{title}</h3>
+                  <small>{node.frontmatter.date}</small>
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: node.frontmatter.description || node.excerpt,
+                    }}
+                  />
+                </PostWrapper>
+              </Link>
+            )
+          })}
+        </PostsWrapper>
       </Layout>
     )
   }
