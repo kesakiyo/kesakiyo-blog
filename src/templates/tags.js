@@ -3,18 +3,18 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Posts from "../components/posts"
 
 class TagsTemplate extends React.Component {
   render() {
     const siteTitle = this.props.data.site.siteMetadata.title
     const posts = this.props.data.allMarkdownRemark.edges
+    const { tag } = this.props.pageContext
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <SEO />
-        {posts.map(post => (
-          <div key={post.node.id}>{post.node.id}</div>
-        ))}
+        <SEO title={`Posts of ${tag}`} />
+        <Posts posts={posts} />
       </Layout>
     )
   }
