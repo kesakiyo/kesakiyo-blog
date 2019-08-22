@@ -1,10 +1,11 @@
-const path = require(`path`)
-const { createFilePath } = require(`gatsby-source-filesystem`)
+const path = require("path")
+const { createFilePath } = require("gatsby-source-filesystem")
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  const blogPost = path.resolve("./src/templates/blog-post.js")
+  const tags = path.resolve("./src/templates/tags.js")
   const result = await graphql(
     `
       {
@@ -16,6 +17,7 @@ exports.createPages = async ({ graphql, actions }) => {
             node {
               fields {
                 slug
+                tags
               }
               frontmatter {
                 type
@@ -51,22 +53,47 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
+
+  posts
+    .reduce((acc, post) => [...acc, ...post.node.fields.tags], [])
+    .filter((tag, idx, self) => self.indexOf(tag) === idx)
+    .forEach(tag => {
+      createPage({
+        path: `tags/${tag}`,
+        component: tags,
+        context: {
+          tag,
+        },
+      })
+    })
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === `MarkdownRemark`) {
-    const value = (() => {
+    const slug = (() => {
       if (node.frontmatter.path) {
         return node.frontmatter.path
       }
       return createFilePath({ node, getNode })
     })()
     createNodeField({
-      name: `slug`,
       node,
-      value,
+      name: "slug",
+      value: slug,
+    })
+
+    const tags = (() => {
+      if (typeof node.frontmatter.tags !== "string") {
+        return []
+      }
+      return node.frontmatter.tags.split(/\W+/g)
+    })()
+    createNodeField({
+      node,
+      name: "tags",
+      value: tags,
     })
   }
 }

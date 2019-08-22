@@ -5,32 +5,33 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Posts from "../components/posts"
 
-class BlogIndex extends React.Component {
+class TagsTemplate extends React.Component {
   render() {
-    const { data } = this.props
-    const siteTitle = data.site.siteMetadata.title
-    const posts = data.allMarkdownRemark.edges
+    const siteTitle = this.props.data.site.siteMetadata.title
+    const posts = this.props.data.allMarkdownRemark.edges
+    const { tag } = this.props.pageContext
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <SEO title="All posts" />
+        <SEO title={`Posts of ${tag}`} />
         <Posts posts={posts} />
       </Layout>
     )
   }
 }
 
-export default BlogIndex
+export default TagsTemplate
 
-export const pageQuery = graphql`
-  query {
+export const tagsQuery = graphql`
+  query PostsByTag($tag: String!) {
     site {
       siteMetadata {
         title
+        author
       }
     }
     allMarkdownRemark(
-      filter: { frontmatter: { type: { eq: "blog" } } }
+      filter: { fields: { tags: { in: [$tag] } } }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {
