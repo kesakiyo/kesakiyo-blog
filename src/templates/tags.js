@@ -30,13 +30,17 @@ export const tagsQuery = graphql`
         author
       }
     }
-    allMarkdownRemark(filter: { fields: { tags: { in: [$tag] } } }) {
+    allMarkdownRemark(
+      filter: { fields: { tags: { in: [$tag] } } }
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
       edges {
         node {
           id
           excerpt
           fields {
             slug
+            tags
           }
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
