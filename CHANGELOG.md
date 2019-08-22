@@ -5,6 +5,10 @@ type: changelog
 
 # Change log
 
+## v0.0.7
+
+- It is possible add tags to blog. [#7](https://github.com/kesakiyo/kesakiyo-blog/pull/7)
+
 ## v0.0.6
 
 - Add css to main page. [#6](https://github.com/kesakiyo/kesakiyo-blog/pull/6)
