@@ -1,5 +1,5 @@
 ---
-title: New Beginnings
+title: 자바스크립트의 어원과 그 미래
 date: "2015-05-28T22:40:32.169Z"
 description: This is a custom description for SEO and Open Graph purposes, rather than the default generated excerpt. Simply add a description field to the frontmatter.
 type: blog
@@ -12,7 +12,7 @@ Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
 right at the coast of the Semantics, a large language ocean. A small river named
 Duden flows by their place and supplies it with the necessary regelialia.
 
-## On deer horse aboard tritely yikes and much
+## 웹 프레임 워크의 앞으로의 동향
 
 The Big Oxmox advised her not to do so, because there were thousands of bad
 Commas, wild Question Marks and devious Semikoli, but the Little Blind Text
@@ -29,6 +29,20 @@ view back on the skyline of her hometown _Bookmarksgrove_, the headline of
 [Alphabet Village](http://google.com) and the subline of her own road, the Line
 Lane. Pityful a rhetoric question ran over her cheek, then she continued her
 way. On her way she met a copy.
+
+```c
+#include <stdio.h>
+
+int main() {
+    int a, b;
+    scanf("%d%d", &a, &b);
+    printf("%d\n", a + b);
+}
+```
+
+```javascript
+const a = document.getElementById("hello")
+```
 
 ### Overlaid the jeepers uselessly much excluding
 
