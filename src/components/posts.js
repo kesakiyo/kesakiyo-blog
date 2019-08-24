@@ -32,6 +32,7 @@ const PostParagraph = styled.p`
   text-overflow: ellipsis;
   word-wrap: break-word;
   overflow: hidden;
+  padding-bottom: 25px;
 `
 
 const Tags = styled.div`
