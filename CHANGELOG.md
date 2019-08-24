@@ -5,6 +5,12 @@ type: changelog
 
 # Change log
 
+## v0.1.0
+
+- Add algorithm and dev pages. [2c06d](https://github.com/kesakiyo/kesakiyo-blog/commit/2c06d)
+
+- Add css style to blog post. [eaa28](https://github.com/kesakiyo/kesakiyo-blog/commit/eaa28)
+
 ## v0.0.7
 
 - It is possible add tags to blog. [#7](https://github.com/kesakiyo/kesakiyo-blog/pull/7)
