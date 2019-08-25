@@ -12,6 +12,12 @@ Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
 right at the coast of the Semantics, a large language ocean. A small river named
 Duden flows by their place and supplies it with the necessary regelialia.
 
+$$
+a^2 + b^2 = c^2
+$$
+
+$a^2 + b^2 = c^2$
+
 ## 웹 프레임 워크의 앞으로의 동향
 
 The Big Oxmox advised her not to do so, because there were thousands of bad
