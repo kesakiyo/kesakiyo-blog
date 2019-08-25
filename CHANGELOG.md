@@ -5,6 +5,10 @@ type: changelog
 
 # Change log
 
+## v0.1.1
+
+- Add mathjax library to blog. [8fd35](https://github.com/kesakiyo/kesakiyo-blog/pull/11/commits/8fd35)
+
 ## v0.1.0
 
 - Add algorithm and dev pages. [2c06d](https://github.com/kesakiyo/kesakiyo-blog/commit/2c06d)
