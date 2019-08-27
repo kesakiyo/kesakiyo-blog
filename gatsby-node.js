@@ -71,6 +71,7 @@ exports.createPages = async ({ graphql, actions }) => {
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
+  console.log(node.internal.type, node.absolutePath)
   if (node.internal.type === `MarkdownRemark`) {
     const slug = (() => {
       if (node.frontmatter.path) {
